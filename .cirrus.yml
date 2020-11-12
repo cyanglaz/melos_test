@@ -1,23 +1,23 @@
 
 task:
   - name: test_task
-  container:
-    dockerfile: .ci/Dockerfile
-    cpu: 8
-    memory: 16G
-  upgrade_script:
-    - flutter channel master
-    - flutter upgrade
-    - git fetch origin master
-  activate_script: pub global activate flutter_plugin_tools
-  matrix:
-    - name: test
-      env:
-        matrix:
-          CHANNEL: "master"
-      test_script:
-        - flutter channel $CHANNEL
-        - ./script/incremental_build.sh test
+    container:
+      dockerfile: .ci/Dockerfile
+      cpu: 8
+      memory: 16G
+    upgrade_script:
+      - flutter channel master
+      - flutter upgrade
+      - git fetch origin master
+    activate_script: pub global activate flutter_plugin_tools
+    matrix:
+      - name: test
+        env:
+          matrix:
+            CHANNEL: "master"
+        test_script:
+          - flutter channel $CHANNEL
+          - ./script/incremental_build.sh test
 
 task:
   depends_on:
