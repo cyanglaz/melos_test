@@ -29,8 +29,9 @@ task:
     - flutter channel master
     - flutter upgrade
     - git fetch origin master
-  activate_script: pub global activate melos
-  bootstrap_script: melos bootstrap --ignore="*example*"
+  activate_script:
+    - pub global activate melos
+    - melos bootstrap --ignore="*example*"
   matrix:
     - name: melos_analyze
       test_script:
