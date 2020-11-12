@@ -17,3 +17,16 @@ task:
         - flutter channel $CHANNEL
         - ./script/incremental_build.sh test
 
+task:
+  container:
+    dockerfile: .ci/Dockerfile
+    cpu: 8
+    memory: 16G
+  upgrade_script:
+    - flutter channel master
+    - flutter upgrade
+    - git fetch origin master
+  activate_script: pub global activate melos
+  activate_script: melos bootstrap --ignore="*example*"
+
+
