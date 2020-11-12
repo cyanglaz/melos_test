@@ -1,6 +1,6 @@
 
 task:
-  name: test_task
+  - name: test_task
   container:
     dockerfile: .ci/Dockerfile
     cpu: 8
