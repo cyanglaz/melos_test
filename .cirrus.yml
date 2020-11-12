@@ -1,4 +1,8 @@
 task:
+  container:
+    dockerfile: .ci/Dockerfile
+    cpu: 8
+    memory: 16G
   upgrade_script:
     - flutter channel master
     - flutter upgrade
