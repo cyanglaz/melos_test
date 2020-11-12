@@ -27,6 +27,11 @@ task:
     - flutter upgrade
     - git fetch origin master
   activate_script: pub global activate melos
-  activate_script: melos bootstrap --ignore="*example*"
+  bootstrap_script: melos bootstrap --ignore="*example*"
+  matrix:
+    - name: melos_analyze
+      test_script:
+        - melos run analyze
+
 
 
