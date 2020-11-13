@@ -21,7 +21,7 @@ task:
 
 task:
   env:
-    PATH: $PATH:/usr/local/bin
+    melos: $HOME/.pub-cache/bin/melos
   depends_on: Tests
   container:
     dockerfile: .ci/Dockerfile
@@ -33,12 +33,11 @@ task:
     - git fetch origin master
   activate_script:
     - pub global activate melos
-    - export PATH="$PATH":"$HOME/.pub-cache/bin"
-    - melos bootstrap --ignore="*example*"
+    - $melos bootstrap --ignore="*example*"
   matrix:
     - name: melos_analyze
       test_script:
-        - melos run analyze
+        - $melos run analyze
 
 
 
