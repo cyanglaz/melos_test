@@ -30,7 +30,7 @@ task:
   upgrade_script:
     - flutter channel stable
     - flutter upgrade
-    - git fetch origin stable
+    - git fetch origin master
   activate_script:
     - pub global activate melos
     - export PATH="$PATH":"$HOME/.pub-cache/bin"
