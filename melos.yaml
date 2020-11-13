@@ -10,3 +10,6 @@ scripts:
 
 dev_dependencies:
   pedantic: ^1.8.0
+
+environment:
+  sdk: '>=2.10.0 <3.0.0'
