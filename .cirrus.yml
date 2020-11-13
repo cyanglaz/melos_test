@@ -28,9 +28,9 @@ task:
     cpu: 8
     memory: 16G
   upgrade_script:
-    - flutter channel master
+    - flutter channel stable
     - flutter upgrade
-    - git fetch origin master
+    - git fetch origin stable
   activate_script:
     - pub global activate melos
     - export PATH="$PATH":"$HOME/.pub-cache/bin"
