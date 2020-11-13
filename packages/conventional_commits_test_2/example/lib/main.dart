@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     try {
       platformVersion = await ConventionalCommitsTest_2.platformVersion;
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      platformVersion = 'Failed to get platform version. 1';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
