@@ -20,7 +20,8 @@ task:
         - ./script/incremental_build.sh test
 
 task:
-  PATH: $PATH:/usr/local/bin
+  env:
+    PATH: $PATH:/usr/local/bin
   depends_on: Tests
   container:
     dockerfile: .ci/Dockerfile
