@@ -1,8 +1,7 @@
 name: conventional_commits_test_1
 description: A new flutter plugin project.
 version: 0.0.1
-author:
-homepage:
+repository: https://github.com/cyanglaz/melos_test
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
