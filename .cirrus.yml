@@ -37,7 +37,7 @@ task:
     - name: melos_analyze
       test_script:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
-        - melos run analyze
+        - melos run version
 
 
 
