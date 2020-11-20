@@ -40,6 +40,7 @@ task:
         - melos run update_version
         - git branch
         - git status
+        - git log
         - git push --follow-tags
 
 
