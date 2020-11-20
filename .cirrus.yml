@@ -38,6 +38,8 @@ task:
       test_script:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - melos run update_version
+        - git branch
+        - git status
         - git push --follow-tags
 
 
