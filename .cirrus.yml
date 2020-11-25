@@ -36,6 +36,8 @@ task:
   matrix:
     - name: melos_analyze
       test_script:
+        - git config --global user.email "ychris@google.com"
+        - git config --global user.name "plugin_team"
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - melos run update_version
         - git branch
