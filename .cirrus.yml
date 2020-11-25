@@ -30,7 +30,7 @@ task:
     - flutter upgrade
     - git fetch origin master
   activate_script:
-    - pub global activate --source git https://github.com/cyanglaz/melos.git
+    - pub global activate --source git https://github.com/cyanglaz/my_melos.git
     - export PATH="$PATH":"$HOME/.pub-cache/bin"
     - melos bootstrap --ignore="*example*"
   matrix:
