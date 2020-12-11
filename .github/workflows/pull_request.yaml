@@ -26,7 +26,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: example-patches
+          branch: version-update
           delete-branch: true
           title: 'Version Updates'
 
@@ -34,6 +34,8 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
+      - name: git push
+        run: git push origin version-update
       - name: Git log
         run: git log
 
