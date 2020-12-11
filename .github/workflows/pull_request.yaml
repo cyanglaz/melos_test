@@ -36,6 +36,8 @@ jobs:
         run: melos version --yes
       - name: git push
         run: git push origin version-update
+      - name: Git branch
+        run: git branch
       - name: Git log
         run: git log
 
