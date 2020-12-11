@@ -34,6 +34,8 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
+      - name: Git log
+        run: git log
 
         # env:
         #   DEFAULT_BRANCH: master
