@@ -22,10 +22,6 @@ jobs:
         run: ./.github/workflows/scripts/install-flutter.sh stable
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
-      - name: "Bootstrap Workspace"
-        run: melos bootstrap --ignore="*example*"
-      - name: Melos Version
-        run: melos version --yes
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -33,6 +29,11 @@ jobs:
           branch: example-patches
           delete-branch: true
           title: 'Version Updates'
+
+      - name: "Bootstrap Workspace"
+        run: melos bootstrap --ignore="*example*"
+      - name: Melos Version
+        run: melos version --yes
 
         # env:
         #   DEFAULT_BRANCH: master
