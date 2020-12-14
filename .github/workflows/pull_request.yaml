@@ -17,14 +17,15 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: version-update
 
       - name: "Install Flutter"
         run: ./.github/workflows/scripts/install-flutter.sh stable
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
-
+      - name: git log
+        run: git log
+      - name: git branch
+        run: git branch
       - name: git config user.name
         run: git config --global user.name "cyanglaz"
       - name: git config user.email
@@ -41,8 +42,6 @@ jobs:
           delete-branch: true
           title: 'Version Updates'
 
-      - name: git push
-        run: git push origin version-update
         # env:
         #   DEFAULT_BRANCH: master
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
