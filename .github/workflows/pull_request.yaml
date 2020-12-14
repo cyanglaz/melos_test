@@ -40,7 +40,7 @@ jobs:
         with:
           branch: version-update
           delete-branch: true
-          title: 'Version Updates'
+          title: 'chore(release): publish packages'
 
         # env:
         #   DEFAULT_BRANCH: master
