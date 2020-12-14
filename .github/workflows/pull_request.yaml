@@ -32,15 +32,16 @@ jobs:
 
       - name: "Bootstrap Workspace"
         run: melos bootstrap --ignore="*example*"
-      - name: Melos Version
-        run: melos version --yes
-      - name: git push
-        run: git push origin version-update
       - name: Git branch
         run: git branch
       - name: Git log
         run: git log
-
+      - name: Melos Version
+        run: melos version --yes
+      - name: Git log
+        run: git log
+      - name: git push
+        run: git push origin version-update
         # env:
         #   DEFAULT_BRANCH: master
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
