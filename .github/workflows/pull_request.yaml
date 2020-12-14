@@ -31,10 +31,10 @@ jobs:
           title: 'Version Updates'
       - name: Git Checkout
         run: git checkout version-update
-      - name: git config user.name
-        run: git config --global user.name "Chris Yang"
-      - name: git config user.email
-        run: git config --global user.email "cyang8954.game@gmail.com"
+      # - name: git config user.name
+      #   run: git config --global user.name "Chris Yang"
+      # - name: git config user.email
+      #   run: git config --global user.email "cyang8954.game@gmail.com"
       - name: "Bootstrap Workspace"
         run: melos bootstrap --ignore="*example*"
       - name: Git branch
