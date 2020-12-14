@@ -32,7 +32,7 @@ jobs:
       - name: Git config
         run: git config -l
       - name: Melos Version
-        run: melos update_version
+        run: melos run update_version
       - name: Git log
         run: git log
 
