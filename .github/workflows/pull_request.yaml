@@ -23,13 +23,6 @@ jobs:
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: version-update
-          delete-branch: true
-          title: 'Version Updates'
-
       - name: "Bootstrap Workspace"
         run: melos bootstrap --ignore="*example*"
       - name: Git branch
@@ -42,6 +35,14 @@ jobs:
         run: melos update_version
       - name: Git log
         run: git log
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: version-update
+          delete-branch: true
+          title: 'Version Updates'
+
       - name: git push
         run: git push origin version-update
         # env:
