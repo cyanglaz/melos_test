@@ -29,24 +29,24 @@ jobs:
           branch: version-update
           delete-branch: true
           title: 'Version Updates'
-      - name: Git Checkout
-        run: git checkout version-update
-      # - name: git config user.name
-      #   run: git config --global user.name "Chris Yang"
-      # - name: git config user.email
-      #   run: git config --global user.email "cyang8954.game@gmail.com"
+      # - name: Git Checkout
+      #   run: git checkout version-update
+      - name: git config user.name
+        run: git config --global user.name "cyanglaz"
+      - name: git config user.email
+        run: git config --global user.email "yanglaz@users.noreply.github.com"
       - name: "Bootstrap Workspace"
         run: melos bootstrap --ignore="*example*"
-      - name: Git branch
-        run: git branch
-      - name: Git log
-        run: git log
-      - name: Git config
-        run: git config -l
+      # - name: Git branch
+      #   run: git branch
+      # - name: Git log
+      #   run: git log
+      # - name: Git config
+      #   run: git config -l
       - name: Melos Version
-        run: melos run update_version
-      - name: Git log
-        run: git log
+        run: melos version --yes
+      # - name: Git log
+      #   run: git log
 
       - name: git push
         run: git push origin version-update
