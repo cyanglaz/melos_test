@@ -1,3 +1,9 @@
+## 0.0.4+2
+
+ - **FIX**: update test 12321.
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+
 ## 0.0.4+1
 
  - **FIX**: update test (#25).
