@@ -24,10 +24,6 @@ jobs:
         run: ./.github/workflows/scripts/install-flutter.sh stable
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
-      - name: git log
-        run: git log
-      - name: git branch
-        run: git branch
       - name: git config user.name
         run: git config --global user.name "cyanglaz"
       - name: git config user.email
@@ -36,14 +32,16 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
+      - name: git push
+        run: git push --allow-tags
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: version-update
-          delete-branch: true
-          title: 'chore(release): publish packages'
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     branch-suffix: release-packages
+      #     delete-branch: true
+      #     title: 'chore(release): publish packages'
 
-        # env:
-        #   DEFAULT_BRANCH: master
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
