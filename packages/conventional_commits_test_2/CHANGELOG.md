@@ -1,3 +1,7 @@
+## 0.0.4+1
+
+ - **FIX**: fix test for package 2 (#26).
+
 ## 0.0.4
 
  - **FIX**: update tests 3.

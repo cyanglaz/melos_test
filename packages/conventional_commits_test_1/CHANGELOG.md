@@ -1,3 +1,7 @@
+## 0.0.4+1
+
+ - **FIX**: update test (#25).
+
 ## 0.0.4
 
  - **FIX**: update github name (#3).
