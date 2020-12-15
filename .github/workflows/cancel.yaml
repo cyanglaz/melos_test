@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: styfle/cancel-workflow-action@0.6.0
         with:
-          workflow_id: version_update
+          workflow_id: melos_version.yaml
           access_token: ${{ secrets.GITHUB_TOKEN }}
