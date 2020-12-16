@@ -1,3 +1,7 @@
+## 0.0.4+3
+
+ - **FIX**: update tests (#27).
+
 ## 0.0.4+2
 
  - **FIX**: update test 12321.
