@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 #fetch all history so melos can determine version correctly.
 
       - name: "Install Flutter"
         run: ./.github/workflows/scripts/install-flutter.sh stable
@@ -31,6 +31,8 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
+      - name : log
+        run: git log
       - name: git push
         run: git push
 
