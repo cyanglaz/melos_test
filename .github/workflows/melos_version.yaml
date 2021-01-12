@@ -9,10 +9,17 @@ jobs:
   update_commits:
     # Name the Job
     name: version_update
-    if: github.event.check_suite.app.name == 'Cirrus CI' && github.event.check_suite.conclusion == 'success'
     # Set the type of machine to run on
     runs-on: ubuntu-latest
     steps:
+      - name: Wait on tests
+        # or lewagon/wait-on-check-action@v0.2 for most recent stable version
+        uses: lewagon/wait-on-check-action@master 
+        with:
+          ref: master # can be commit SHA or tag too
+          check-name: test # name of the existing check - omit to wait for all checks
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 20 # seconds
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
