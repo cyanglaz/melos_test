@@ -31,8 +31,8 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
-      - name: git push origin HEAD:master
-        run: git push origin HEAD:master --follow-tags
+      - name: git push
+        run: git push
 
       # - name: Create Pull Request
       #   uses: peter-evans/create-pull-request@v3
