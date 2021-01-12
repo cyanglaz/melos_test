@@ -23,6 +23,7 @@ jobs:
         uses: lewagon/wait-on-check-action@master
         with:
           ref: master # can be commit SHA or tag too
+          running-workflow-name: 'version_update'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20 # seconds
       # Checks out a copy of your repository on the ubuntu-latest machine
