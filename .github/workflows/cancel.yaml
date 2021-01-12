@@ -1,7 +1,8 @@
 name: cancel melos
 on:
-  check_suite:
-    type: ['completed']
+  push:
+    branches:
+      - master
 
 jobs:
   cancel:
@@ -9,13 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Wait on tests
-        # or lewagon/wait-on-check-action@v0.2 for most recent stable version
-        uses: lewagon/wait-on-check-action@master
-        with:
-          ref: master # can be commit SHA or tag too
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 20 # seconds
       - uses: styfle/cancel-workflow-action@0.6.0
         with:
           workflow_id: melos_version.yaml
