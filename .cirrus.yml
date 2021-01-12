@@ -17,7 +17,7 @@ task:
           CHANNEL: "master"
       test_script:
         - flutter channel $CHANNEL
-        # - ./script/incremental_build.sh test
+        - ./script/incremental_build.sh test
 
 # task:
 #   depends_on: Tests
