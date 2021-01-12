@@ -31,7 +31,7 @@ jobs:
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
         run: melos version --yes
-      - name: git push
+      - name: git push origni HEAD:master
         run: git push --follow-tags
 
       # - name: Create Pull Request
