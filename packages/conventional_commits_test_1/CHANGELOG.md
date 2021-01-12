@@ -1,3 +1,9 @@
+## 0.0.4+6
+
+ - **FIX**: test PR (#35).
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+
 ## 0.0.4+5
 
  - **FIX**: test PR (#35).
