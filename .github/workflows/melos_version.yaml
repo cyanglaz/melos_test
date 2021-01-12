@@ -34,7 +34,7 @@ jobs:
       - name : log
         run: git log
       - name: git push
-        run: git push --allow-tags
+        run: git push --follow-tags
 
       # - name: Create Pull Request
       #   uses: peter-evans/create-pull-request@v3
