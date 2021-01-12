@@ -24,9 +24,9 @@ jobs:
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: git config user.name
-        run: git config --global user.name "cyanglaz"
+        run: git config --global user.name ${{ secrets.USER_NAME }}
       - name: git config user.email
-        run: git config --global user.email "yanglaz@users.noreply.github.com"
+        run: git config --global user.email ${{ secrets.USER_EMAIL }}
       - name: "Bootstrap Workspace"
         run: melos bootstrap --ignore="*example*"
       - name: Melos Version
