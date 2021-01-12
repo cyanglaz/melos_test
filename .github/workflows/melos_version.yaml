@@ -13,9 +13,14 @@ jobs:
     # Set the type of machine to run on
     runs-on: ubuntu-latest
     steps:
+      - name: cancel previous runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          workflow_id: melos_version.yaml
+          access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
-        uses: lewagon/wait-on-check-action@master 
+        uses: lewagon/wait-on-check-action@master
         with:
           ref: master # can be commit SHA or tag too
           repo-token: ${{ secrets.GITHUB_TOKEN }}
