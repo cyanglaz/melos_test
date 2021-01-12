@@ -1,7 +1,8 @@
 name: run melos
 on:
-  check_suite:
-    type: ['completed']
+  push:
+    branches:
+      - master
 
 jobs:
   # Set the job key. The key is displayed as the job name
@@ -17,7 +18,6 @@ jobs:
         uses: lewagon/wait-on-check-action@master 
         with:
           ref: master # can be commit SHA or tag too
-          check-name: test # name of the existing check - omit to wait for all checks
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20 # seconds
       # Checks out a copy of your repository on the ubuntu-latest machine
