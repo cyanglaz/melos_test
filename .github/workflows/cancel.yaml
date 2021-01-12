@@ -1,4 +1,4 @@
-name: Cancel
+name: cancel melos
 on:
   check_suite:
     type: ['completed']
@@ -6,6 +6,7 @@ on:
 jobs:
   cancel:
     name: 'Cancel Previous Runs'
+    if: github.event.check_suite.app.name == 'Cirrus CI' && github.event.check_suite.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:

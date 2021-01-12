@@ -1,4 +1,4 @@
-# Run this workflow every time a new commit pushed to your repository
+name: run melos
 on:
   check_suite:
     type: ['completed']
