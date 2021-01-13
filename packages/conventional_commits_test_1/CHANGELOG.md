@@ -1,3 +1,7 @@
+## 0.0.4+8
+
+ - **FIX**: add rand test.
+
 ## 0.0.4+7
 
  - **FIX**: test to 51.
