@@ -1,7 +1,8 @@
 name: run melos
 on:
-  check_run:
-    types: [completed]
+  push:
+    branches:
+      - master
 
 jobs:
   # Set the job key. The key is displayed as the job name
