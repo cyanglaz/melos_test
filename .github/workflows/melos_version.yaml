@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: cancel previous runs
-        uses: styfle/cancel-workflow-action@0.6.0
+        uses: styfle/cancel-workflow-action@3d86a7cc43670094ac248017207be0295edbc31d
         with:
           workflow_id: melos_version.yaml
           access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
-        uses: lewagon/wait-on-check-action@master
+        uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
         with:
           ref: master # can be commit SHA or tag too
           running-workflow-name: 'version_update'
