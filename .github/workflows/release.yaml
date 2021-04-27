@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log git sha
-        run: echo "$GITHUB_SHA $GITHUB_SHA~"
+        run: echo "${{ github.sha }} ${{ github.sha }}~"
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
         with:
-          ref: $env.GITHUB_SHA # can be commit SHA or tag too
+          ref: ${{ github.sha }} # can be commit SHA or tag too
           running-workflow-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
@@ -23,7 +23,7 @@ jobs:
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
         with:
-          ref: $GITHUB_SHA~ # can be commit SHA or tag too
+          ref: ${{ github.sha }}~ # can be commit SHA or tag too
           check-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
