@@ -13,7 +13,7 @@ jobs:
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
         with:
-          ref: ${{ GITHUB_SHA }} # can be commit SHA or tag too
+          ref: ${{ env.GITHUB_SHA }} # can be commit SHA or tag too
           running-workflow-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
@@ -21,7 +21,7 @@ jobs:
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
         with:
-          ref: ${{ GITHUB_SHA~ }} # can be commit SHA or tag too
+          ref: ${{ env.GITHUB_SHA~ }} # can be commit SHA or tag too
           check-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
@@ -42,7 +42,7 @@ jobs:
       - name: run release
         run: echo "replace this command with release command"
       - name: Log
-        run: echo "$GITHUB_SHA ${{ GITHUB_SHA~ }}"
+        run: echo "$GITHUB_SHA ${{ env.GITHUB_SHA~ }}"
       - name: sleep
         run: sleep 60
 
