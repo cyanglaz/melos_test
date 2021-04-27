@@ -1,6 +1,6 @@
 ## 0.0.4+8
 
- - **FIX**: add rand test.
+ - **FIX**: add rand test  aa.
 
 ## 0.0.4+7
 
