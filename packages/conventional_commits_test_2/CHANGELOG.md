@@ -1,6 +1,6 @@
 ## 0.0.4+2
 
- - **FIX**: update tests (#27).
+ - **FIX**: update tests (#27) a.
 
 ## 0.0.4+1
 
