@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log git sha
-        run: echo "${{env.$GITHUB_SHA}} ${{env.GITHUB_SHA}}~"
+        run: echo "${{env.GITHUB_SHA}} ${{env.GITHUB_SHA}}~"
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
