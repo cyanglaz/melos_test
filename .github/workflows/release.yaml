@@ -9,12 +9,6 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - name: Log git sha
-        run: echo "${{ github.sha }} ${{ github.sha }}~"
-      - name: Log event
-        run: echo ${{ toJSON(github.event) }}
-      - name: Log run_number
-        run: echo ${{ github.run_number }}
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
@@ -31,6 +25,7 @@ jobs:
           check-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
+          allowed-conclusions: success,skipped,cancelled,failure
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
