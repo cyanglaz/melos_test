@@ -33,9 +33,9 @@ jobs:
           fetch-depth: 0 #fetch all history so the tool can get all the tag to determine version.
 
       - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
-      - name: "Install Tools"
-        run: ./.github/workflows/scripts/install-tools.sh
+        run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+      - name: flutter doctor
+        run: flutter doctor -v
       - name: git config user.name
         run: git config --global user.name ${{ secrets.USER_NAME }}
       - name: git config user.email
@@ -43,7 +43,7 @@ jobs:
       - name: run release
         run: echo "replace this command with release command"
       - name: sleep
-        run: sleep 300
+        run: sleep 30
 
 
       # - name: "Bootstrap Workspace"
