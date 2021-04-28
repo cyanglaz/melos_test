@@ -23,6 +23,8 @@ jobs:
           check-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
+          # Github actions does not have a re-run flag, so we can't skip this wait for re-run,
+          # In order to not get stuck into a failure loop, we allow failure conclusion for this wait.
           allowed-conclusions: success,skipped,cancelled,failure
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
@@ -41,7 +43,7 @@ jobs:
       - name: run release
         run: echo "replace this command with release command"
       - name: sleep
-        run: sleep 60
+        run: sleep 300
 
 
       # - name: "Bootstrap Workspace"
