@@ -12,7 +12,7 @@ jobs:
       - name: Log git sha
         run: echo "${{ github.sha }} ${{ github.sha }}~"
       - name: Log event
-        run: echo ${{ github.event }}
+        run: echo ${{ toJSON(github.event) }}
       - name: Log run_number
         run: echo ${{ github.run_number }}
       - name: Wait on tests
