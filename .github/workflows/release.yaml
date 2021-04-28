@@ -10,16 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait on tests
-        # or lewagon/wait-on-check-action@v0.2 for most recent stable version
-        uses: lewagon/wait-on-check-action@v2
+        uses: lewagon/wait-on-check-action@master
         with:
           ref: ${{ github.sha }} # can be commit SHA or tag too
           running-workflow-name: 'release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
       - name: Wait on last commit
-        # or lewagon/wait-on-check-action@v0.2 for most recent stable version
-        uses: lewagon/wait-on-check-action@v2
+        uses: lewagon/wait-on-check-action@master
         with:
           ref: ${{ github.sha }}~ # can be commit SHA or tag too
           check-name: 'release'
