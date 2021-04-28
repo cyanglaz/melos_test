@@ -3,12 +3,6 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
-    inputs:
-      flag:
-        description: 'A flag '
-        required: true
-        default: 'Mona the Octocat'
 
 jobs:
   release:
@@ -18,7 +12,7 @@ jobs:
       - name: Log git sha
         run: echo "${{ github.sha }} ${{ github.sha }}~"
       - name: Log event
-        run: echo ${{ github.event_name }}
+        run: echo ${{ github.event }}
       - name: Wait on tests
         # or lewagon/wait-on-check-action@v0.2 for most recent stable version
         uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa
