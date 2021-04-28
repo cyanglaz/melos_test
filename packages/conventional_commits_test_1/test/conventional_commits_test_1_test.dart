@@ -19,10 +19,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  // test('getPlatformVersion', () async {
-  //   var rand = Random();
-  //   var n = rand.nextInt(5);
-  //   expect(n, 0);
-  //   expect(await ConventionalCommitsTest_1.platformVersion, '51');
-  // });
+  test('getPlatformVersion', () async {
+    expect(await ConventionalCommitsTest_1.platformVersion, '51');
+  });
 }
