@@ -9,13 +9,13 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      # - name: Wait on tests
-      #   uses: lewagon/wait-on-check-action@master
-      #   with:
-      #     ref: ${{ github.sha }} # can be commit SHA or tag too
-      #     running-workflow-name: 'release'
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-      #     wait-interval: 10 # seconds
+      - name: Wait on tests
+        uses: lewagon/wait-on-check-action@master
+        with:
+          ref: ${{ github.sha }} # can be commit SHA or tag too
+          running-workflow-name: 'release'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10 # seconds
       - name: Wait on last commit
         uses: lewagon/wait-on-check-action@master
         with:
@@ -33,7 +33,15 @@ jobs:
           fetch-depth: 0 #fetch all history so the tool can get all the tag to determine version.
 
       - name: "Install Flutter"
-        run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+        run: |
+          cd $HOME
+          git clone https://github.com/flutter/flutter.git --depth 1 -b $BRANCH _flutter
+          echo "$HOME/_flutter/bin" >> $GITHUB_PATH
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          echo "$HOME/_flutter/.pub-cache/bin" >> $GITHUB_PATH
+          echo "$HOME/_flutter/bin/cache/dart-sdk/bin" >> $GITHUB_PATH
+          cd $GITHUB_WORKSPACE
+
       - name: flutter doctor
         run: flutter doctor -v
       - name: git config user.name
