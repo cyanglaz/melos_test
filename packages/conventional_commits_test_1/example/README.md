@@ -1,6 +1,6 @@
 # conventional_commits_test_1_example
 
-Demonstrates how to use the conventional_commits_test_1 plugin.
+Demonstrates how to use the conventional_commits_test_1 plugin. haha
 
 ## Getting Started
 
