@@ -33,9 +33,12 @@ jobs:
           fetch-depth: 0 #fetch all history so the tool can get all the tag to determine version.
 
       - name: "Install Flutter"
+        # Github aciont doesn't support templates so it is hard to share this snippet with another action
+        # If we eventually need to use this in more workflow, we could create a shell script that contains this
+        # snippet.
         run: |
           cd $HOME
-          git clone https://github.com/flutter/flutter.git --depth 1 -b $BRANCH _flutter
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
           echo "$HOME/_flutter/bin" >> $GITHUB_PATH
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
           echo "$HOME/_flutter/.pub-cache/bin" >> $GITHUB_PATH
