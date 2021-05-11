@@ -10,9 +10,9 @@ on:
 
 jobs:
   release:
-    env:
-      PUBLISH_CHECK_JSON: $(dart ./script/tool/lib/src/main.dart publish-check --machine)
-      PUBLISH_CHECK_STATUS: $(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
+    # env:
+    #   PUBLISH_CHECK_JSON: $(dart ./script/tool/lib/src/main.dart publish-check --machine)
+    #   PUBLISH_CHECK_STATUS: $(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
     name: release
     runs-on: ubuntu-latest
     steps:
