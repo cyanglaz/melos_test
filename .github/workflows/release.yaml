@@ -16,31 +16,29 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
-        with:
-          path: flutter
-          repository: flutter/flutter
-          ref: master
-          # Shallow clones don't work; see https://github.com/flutter/flutter/issues/18532
-          fetch-depth: 0
-      - name: Set up Flutter
-        run: |
-          git fetch origin +refs/tags/*:refs/tags/*
-          echo "$env:GITHUB_WORKSPACE\flutter\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          flutter channel ${{matrix.channel}}
-          flutter upgrade
-        working-directory: ${{ github.workspace }}/flutter
-      - name: Doctor
-        # Run doctor, for ease of debugging any issues.
-        run: flutter doctor -v
-      - name: Set up tools
-        run: dart pub get
-        working-directory: ${{ github.workspace }}/plugins/script/tool
-      - name: Get publish check status
-        run: |
-          echo "The PUBLISH_CHECK_JSON is: " + $PUBLISH_CHECK_JSON
-          echo "The PUBLISH_CHECK_STATUS is: " + $PUBLISH_CHECK_STATUS
-        working-directory: ${{ github.workspace }}/plugins
+    - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+      with:
+        path: flutter
+        repository: flutter/flutter
+        ref: master
+        # Shallow clones don't work; see https://github.com/flutter/flutter/issues/18532
+        fetch-depth: 0
+    - name: Set up Flutter
+      run: |
+        # Add tags, which are also necessary for version checks to work.
+        git fetch origin +refs/tags/*:refs/tags/*
+        # Set channel
+        bin\flutter channel ${{matrix.channel}}
+        bin\flutter upgrade
+        # Add fluter to path.
+        echo "$env:GITHUB_WORKSPACE\flutter\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      working-directory: ${{ github.workspace }}/flutter
+    - name: Doctor
+      # Run doctor, for ease of debugging any issues.
+      run: flutter doctor -v
+    - name: Set up tools
+      run: dart pub get
+      working-directory: ${{ github.workspace }}/plugins/script/tool
 #       - name: Cancel if PUBLISH_CHECK_STATUS no-publish
 #         # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
 #         run: echo "The plugins updated in this commit have already been published."
