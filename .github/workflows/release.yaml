@@ -10,6 +10,9 @@ on:
 
 jobs:
   release:
+    env:
+      PUBLISH_CHECK_JSON: $(dart ./script/tool/lib/src/main.dart publish-check --machine)
+      PUBLISH_CHECK_STATUS: $(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
     name: release
     runs-on: ubuntu-latest
     steps:
@@ -31,9 +34,7 @@ jobs:
         working-directory: ${{ github.workspace }}/plugins/script/tool
       - name: Get publish check status
         run: |
-          export PUBLISH_CHECK_JSON=$(dart ./script/tool/lib/src/main.dart publish-check --machine)
           echo "The PUBLISH_CHECK_JSON is: " + $PUBLISH_CHECK_JSON
-          export PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
           echo "The PUBLISH_CHECK_STATUS is: " + $PUBLISH_CHECK_STATUS
         working-directory: ${{ github.workspace }}/plugins
       - name: Cancel if PUBLISH_CHECK_STATUS no-publish
