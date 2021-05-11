@@ -27,8 +27,9 @@ jobs:
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
         echo "$HOME/_flutter/.pub-cache/bin" >> $GITHUB_PATH
         echo "$HOME/_flutter/bin/cache/dart-sdk/bin" >> $GITHUB_PATH
-        flutter doctor -v
         cd $GITHUB_WORKSPACE
+    - name: flutter doctor
+      run: flutter doctor -v
     - name: Set up tools
       run: dart pub get
       working-directory: ${{ github.workspace }}/plugins/script/tool
@@ -86,6 +87,7 @@ jobs:
 #       if: ${{ $PUBLISH_CHECK_STATUS == 'needs-publish' }}
 
     env:
+      DEFAULT_BRANCH: master
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PUBLISH_CHECK_JSON: $(dart ./script/tool/lib/src/main.dart publish-check --machine)
       PUBLISH_CHECK_STATUS: $(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
