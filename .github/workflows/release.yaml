@@ -38,16 +38,18 @@ jobs:
     - name: Set up tools
       run: dart pub get
       working-directory: ${{ github.workspace }}/script/tool
-#     - name: Cancel if PUBLISH_CHECK_STATUS no-publish
-#       # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
-#       run: echo "The plugins updated in this commit have already been published."
-#       if: ${{ $PUBLISH_CHECK_STATUS == 'no-publish' }}
-#     - name: Report failure if PUBLISH_CHECK_STATUS error
-#       # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
-#       run: |
-#         echo "There's an error occured in `publish-check`, please find the details in the "Get publish check status" step"
-#         exit 1
-#       if: ${{ $PUBLISH_CHECK_STATUS == 'error' }}
+    - name: status
+      run: echo $PUBLISH_CHECK_STATUS
+    # - name: Cancel if PUBLISH_CHECK_STATUS no-publish
+    #   # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
+    #   run: echo "The plugins updated in this commit have already been published."
+    #   if: ${{ $PUBLISH_CHECK_STATUS == 'no-publish' }}
+    # - name: Report failure if PUBLISH_CHECK_STATUS error
+    #   # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
+    #   run: |
+    #     echo "There's an error occured in `publish-check`, please find the details in the "Get publish check status" step"
+    #     exit 1
+    #   if: ${{ $PUBLISH_CHECK_STATUS == 'error' }}
 
 # # ######################################################################################### #
 # # All the steps below must be run with `if: ${{ PUBLISH_CHECK_STATUS == 'needs-publish' }}` #
