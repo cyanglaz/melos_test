@@ -30,6 +30,11 @@ jobs:
         cd $GITHUB_WORKSPACE
     - name: flutter doctor
       run: flutter doctor -v
+    # Checks out a copy of the repo.
+    - name: Checkout code
+      uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+      with:
+        fetch-depth: 0 # Fetch all history so the tool can get all the tag to determine version.
     - name: Set up tools
       run: dart pub get
       working-directory: ${{ github.workspace }}/script/tool
@@ -72,13 +77,6 @@ jobs:
 #         # TODO(cyanglaz), only allow success and skipped after https://github.com/flutter/plugins/pull/3840 lands and correct configurations added to this workflow.
 #         # https://github.com/flutter/flutter/issues/81444
 #         allowed-conclusions: success,skipped,cancelled,failure
-#       if: ${{ $PUBLISH_CHECK_STATUS == 'needs-publish' }}
-
-#     # Checks out a copy of the repo.
-#     - name: Checkout code
-#       uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
-#       with:
-#         fetch-depth: 0 # Fetch all history so the tool can get all the tag to determine version.
 #       if: ${{ $PUBLISH_CHECK_STATUS == 'needs-publish' }}
 
 #     # TODO(cyanglaz): add real publish command.
