@@ -64,15 +64,15 @@ jobs:
 # ######################################################################################### #
 
     # This workflow should be the last to run. So wait for all the other tests to succeed.
-    - name: Wait on all tests
-      uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
-      with:
-        ref: ${{ github.sha }} # can be commit SHA or tag too
-        running-workflow-name: 'release'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        wait-interval: 10 # seconds
-        allowed-conclusions: success
-      if: ${{ env.PUBLISH_CHECK_STATUS == 'needs-publish' }}
+    # - name: Wait on all tests
+    #   uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
+    #   with:
+    #     ref: ${{ github.sha }} # can be commit SHA or tag too
+    #     running-workflow-name: 'release'
+    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+    #     wait-interval: 10 # seconds
+    #     allowed-conclusions: success
+    #   if: ${{ env.PUBLISH_CHECK_STATUS == 'needs-publish' }}
 
     # The release process should be synchronized to avoid child commit release before the parent commit,
     # which might cause issue when child commit and parent commit both contain version updates for the same
@@ -84,9 +84,6 @@ jobs:
         check-name: 'release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         wait-interval: 10 # seconds
-        # TODO(cyanglaz), only allow success and skipped after https://github.com/flutter/plugins/pull/3840 lands and correct configurations added to this workflow.
-        # https://github.com/flutter/flutter/issues/81444
-        allowed-conclusions: success,skipped,cancelled,failure
       if: ${{ env.PUBLISH_CHECK_STATUS == 'needs-publish' }}
 
     # TODO(cyanglaz): add real publish command.
