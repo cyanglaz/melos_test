@@ -78,7 +78,7 @@ jobs:
     # which might cause issue when child commit and parent commit both contain version updates for the same
     # plugin.
     - name: Wait on "release" workflow at last commit
-      uses: lewagon/wait-on-check-action@master
+      uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
       with:
         ref: ${{ github.sha }}~ # can be commit SHA or tag too
         check-name: 'release'
