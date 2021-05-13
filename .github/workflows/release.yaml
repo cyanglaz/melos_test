@@ -63,7 +63,7 @@ jobs:
 # All the steps below must be run with `if: ${{ PUBLISH_CHECK_STATUS == 'needs-publish' }}` #
 # ######################################################################################### #
 
-    # This workflow should be the last to run. So wait for all the other tests to succeed.
+    # # This workflow should be the last to run. So wait for all the other tests to succeed.
     # - name: Wait on all tests
     #   uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
     #   with:
@@ -84,6 +84,7 @@ jobs:
         check-name: 'release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         wait-interval: 10 # seconds
+        allowed-conclusions: success,skipped,cancelled
       if: ${{ env.PUBLISH_CHECK_STATUS == 'needs-publish' }}
 
     # TODO(cyanglaz): add real publish command.
