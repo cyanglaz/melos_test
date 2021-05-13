@@ -47,7 +47,7 @@ jobs:
     - name: Set publish check result
       run: echo "PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json-file $HOME/publish_check_json.json --key "status")" >> GITHUB_ENV
     - name: status
-      run: echo ${PUBLISH_CHECK_STATUS}
+      run: echo $PUBLISH_CHECK_STATUS
     # - name: Cancel if PUBLISH_CHECK_STATUS no-publish
     #   # Prints the status, all the steps after this only runs if PUBLISH_CHECK_STATUS == 'needs-publish'
     #   run: echo "The plugins updated in this commit have already been published."
