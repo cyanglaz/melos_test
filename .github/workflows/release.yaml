@@ -39,7 +39,9 @@ jobs:
       run: dart pub get
       working-directory: ${{ github.workspace }}/script/tool
     - name: Run publish check
-      run: echo "PUBLISH_CHECK_JSON=$(dart ./script/tool/lib/src/main.dart publish-check --machine)" >> $GITHUB_ENV
+      run: |
+        touch $HOME/publish_check_json.txt
+        dart ./script/tool/lib/src/main.dart publish-check --machine 2>&1 | tee SomeFile.txt
     - name: Set publish check result
       run: echo "PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")" >> GITHUB_ENV
     - name: status

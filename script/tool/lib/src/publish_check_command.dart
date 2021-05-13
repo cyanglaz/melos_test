@@ -76,17 +76,18 @@ class PublishCheckCommand extends PluginCommand {
 
   @override
   Future<void> run() async {
-    final ZoneSpecification logSwitchSpecification = ZoneSpecification(
-        print: (Zone self, ZoneDelegate parent, Zone zone, String message) {
-      final bool logMachineMessage = argResults[_machineFlag] as bool;
-      if (logMachineMessage && message != _prettyJson(_machineOutput)) {
-        _humanMessages.add(message);
-      } else {
-        parent.print(zone, message);
-      }
-    });
+    await _runCommand();
+    // final ZoneSpecification logSwitchSpecification = ZoneSpecification(
+    //     print: (Zone self, ZoneDelegate parent, Zone zone, String message) {
+    //   final bool logMachineMessage = argResults[_machineFlag] as bool;
+    //   if (logMachineMessage && message != _prettyJson(_machineOutput)) {
+    //     _humanMessages.add(message);
+    //   } else {
+    //     parent.print(zone, message);
+    //   }
+    // });
 
-    await runZoned(_runCommand, zoneSpecification: logSwitchSpecification);
+    // await runZoned(_runCommand, zoneSpecification: logSwitchSpecification);
   }
 
   Future<void> _runCommand() async {
