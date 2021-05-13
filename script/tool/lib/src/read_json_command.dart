@@ -16,7 +16,7 @@ class MapReadJsonCommand extends Command<void> {
     argParser.addOption(
       _kJsonOption,
       help:
-          'The path to a .json file to read from.',
+          'The path to a .json file to read from. The content of the file must be a valid json format.',
     );
     argParser.addOption(
       _kKeyOption,

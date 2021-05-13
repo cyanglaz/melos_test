@@ -41,8 +41,8 @@ jobs:
     - name: Run publish check
       run: |
         touch $HOME/publish_check_json.json
-        dart ./script/tool/lib/src/main.dart publish-check --machine 2>&1 | tee $HOME/publish_check_json.json
-    - name: READ FILE
+        dart ./script/tool/lib/src/main.dart publish-check --machine > $HOME/publish_check_json.json
+    - name: Display publish check output
       run: cat $HOME/publish_check_json.json
     - name: Set publish check result
       run: echo "PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json-file $HOME/publish_check_json.json --key "status")" >> GITHUB_ENV
