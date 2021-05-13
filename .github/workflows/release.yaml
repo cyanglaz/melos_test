@@ -45,7 +45,7 @@ jobs:
     - name: READ FILE
       run: cat $HOME/publish_check_json.json
     - name: Set publish check result
-      run: echo "PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")" >> GITHUB_ENV
+      run: echo "PUBLISH_CHECK_STATUS=$(dart ./script/tool/lib/src/main.dart read-map-json --json-file $HOME/publish_check_json.json --key "status")" >> GITHUB_ENV
     - name: status
       run: echo ${PUBLISH_CHECK_STATUS}
     # - name: Cancel if PUBLISH_CHECK_STATUS no-publish
