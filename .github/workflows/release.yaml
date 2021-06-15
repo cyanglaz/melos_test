@@ -1,7 +1,3 @@
-# This workflow is to automatically publish and tag packages
-#
-# It waits until all other ci tasks to pass before running the critical section.
-
 name: release
 on:
   push:
@@ -10,9 +6,6 @@ on:
 
 jobs:
   release:
-    # env:
-    #   PUBLISH_CHECK_JSON: $(dart ./script/tool/lib/src/main.dart publish-check --machine)
-    #   PUBLISH_CHECK_STATUS: $(dart ./script/tool/lib/src/main.dart read-map-json --json "$PUBLISH_CHECK_JSON" --key "status")
     name: release
     runs-on: ubuntu-latest
     steps:
@@ -28,8 +21,6 @@ jobs:
         echo "$HOME/_flutter/.pub-cache/bin" >> $GITHUB_PATH
         echo "$HOME/_flutter/bin/cache/dart-sdk/bin" >> $GITHUB_PATH
         cd $GITHUB_WORKSPACE
-    # - name: flutter doctor
-    #   run: flutter doctor -v
     # Checks out a copy of the repo.
     - name: Checkout code
       uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
@@ -43,7 +34,7 @@ jobs:
     - name: Wait on all tests
       uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
       with:
-        ref: ${{ github.sha }} # can be commit SHA or tag too
+        ref: ${{ github.sha }}
         running-workflow-name: 'release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         wait-interval: 10 # seconds
