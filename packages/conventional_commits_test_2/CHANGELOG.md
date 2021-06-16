@@ -1,3 +1,7 @@
+## 0.0.5
+
+- new release
+
 ## 0.0.4+3
 
 * Test version change
