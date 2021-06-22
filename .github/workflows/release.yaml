@@ -39,8 +39,8 @@ jobs:
 
     - name: run release
       run: |
-        git config --local user.name ${{ secrets.USER_NAME }}
-        git config --local user.email ${{ secrets.USER_EMAIL }}
+        git config user.name ${{ secrets.USER_NAME }}
+        git config user.email ${{ secrets.USER_EMAIL }}
         dart ./script/tool/lib/src/main.dart publish-plugin --all-changed --base-sha=HEAD~ --skip-confirmation --remote=origin
       env: {PUB_CREDENTIALS: "${{ secrets.PUB_CREDENTIALS }}"}
 
