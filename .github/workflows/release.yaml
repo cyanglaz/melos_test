@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    if: github.repository_owner == 'prisma'
+    if: github.repository_owner == 'cyanglaz'
     name: release
     runs-on: ubuntu-latest
     steps:
