@@ -12,23 +12,14 @@ task:
   activate_script: pub global activate flutter_plugin_tools
   matrix:
     - name: test
-      env:
-        matrix:
-          CHANNEL: "master"
       test_script:
-        - flutter channel $CHANNEL
+        - flutter doctor
     - name: test 2
-      env:
-        matrix:
-          CHANNEL: "master"
       test_script:
-        - flutter channel $CHANNEL
+        - flutter doctor
     - name: test 3
-      env:
-        matrix:
-          CHANNEL: "master"
       test_script:
-        - flutter channel $CHANNEL
+        - flutter doctor
 
 # task:
 #   depends_on: Tests
