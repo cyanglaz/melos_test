@@ -17,6 +17,18 @@ task:
           CHANNEL: "master"
       test_script:
         - flutter channel $CHANNEL
+    - name: test 2
+      env:
+        matrix:
+          CHANNEL: "master"
+      test_script:
+        - flutter channel $CHANNEL
+    - name: test 3
+      env:
+        matrix:
+          CHANNEL: "master"
+      test_script:
+        - flutter channel $CHANNEL
 
 # task:
 #   depends_on: Tests
